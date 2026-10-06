@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>minibus · Amazon Ads Reports</title>
+  <meta name="description" content="Auto-published Amazon Sponsored Products reports (Search term / Targeting / Placement)." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🚌</span>
+      <span class="brand-name">minibus</span>
+      <span class="brand-sub">Amazon Ads Reports</span>
+    </div>
+    <div class="meta">
+      <span id="generated" class="pill">loading…</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Sponsored Products reports, on autopilot.</h1>
+      <p>Daily pulls of <strong>Search term</strong>, <strong>Targeting</strong> and <strong>Placement</strong>
+         reports from Amazon Ads, archived by month and published here as a static site.</p>
+    </section>
+
+    <section id="months" class="months">
+      <div id="empty" class="empty" hidden>
+        <p>No reports published yet.</p>
+        <p class="hint">Run <code>amcreport</code> to download the SP reports, then run
+           <code>build_site.py</code> in this folder and push. They'll show up here.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Built by minibus · static site, no server required</span>
+  </footer>
+
+  <!-- CSV preview modal -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="modal-title">Preview</h3>
+        <button id="modal-close" class="btn-ghost" aria-label="Close">✕</button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

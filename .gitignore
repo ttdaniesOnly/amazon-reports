@@ -1,0 +1,12 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+
+# Local secrets must NEVER be committed (keep amcreport/ separate & private)
+config.json
+*.env
