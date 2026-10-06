@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>minibus · Amazon Ads Reports</title>
-  <meta name="description" content="Auto-published Amazon Sponsored Products reports (Search term / Targeting / Placement)." />
+  <meta name="description" content="Aggregated Amazon Sponsored Products performance — spend, sales, ACOS and daily trends." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -21,35 +21,63 @@
 
   <main class="container">
     <section class="hero">
-      <h1>Sponsored Products reports, on autopilot.</h1>
+      <h1>Sponsored Products performance, on autopilot.</h1>
       <p>Daily pulls of <strong>Search term</strong>, <strong>Targeting</strong> and <strong>Placement</strong>
-         reports from Amazon Ads, archived by month and published here as a static site.</p>
+         reports from Amazon Ads, aggregated into a private warehouse and published here as
+         monthly &amp; daily totals. Raw rows are never exposed.</p>
     </section>
 
-    <section id="months" class="months">
-      <div id="empty" class="empty" hidden>
-        <p>No reports published yet.</p>
-        <p class="hint">Run <code>amcreport</code> to download the SP reports, then run
-           <code>build_site.py</code> in this folder and push. They'll show up here.</p>
+    <section id="empty" class="empty" hidden>
+      <p>No reports published yet.</p>
+      <p class="hint">Once <code>amcreport</code> ingests the first SP reports, totals will appear here automatically.</p>
+    </section>
+
+    <section id="kpis" class="kpis" hidden></section>
+
+    <section id="monthly-wrap" class="panel" hidden>
+      <div class="panel-head">
+        <h2>Monthly totals</h2>
+        <span class="panel-sub">spend · sales · ACOS by month</span>
+      </div>
+      <div class="table-scroll">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Month</th><th>Market</th><th class="num">Impressions</th><th class="num">Clicks</th>
+              <th class="num">Spend</th><th class="num">Sales</th><th class="num">Orders</th>
+              <th class="num">ACOS</th><th class="num">Days</th>
+            </tr>
+          </thead>
+          <tbody id="monthly-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="daily-wrap" class="panel" hidden>
+      <div class="panel-head">
+        <h2>Daily trend</h2>
+        <span class="panel-sub">last 30 days</span>
+      </div>
+      <div id="chart" class="chart"></div>
+      <div class="table-scroll">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Date</th><th>Market</th><th class="num">Impressions</th><th class="num">Clicks</th>
+              <th class="num">Spend</th><th class="num">Sales</th><th class="num">Orders</th><th class="num">ACOS</th>
+            </tr>
+          </thead>
+          <tbody id="daily-body"></tbody>
+        </table>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <span>Built by minibus · static site, no server required</span>
+    <span>Built by minibus · static site, data served from a private warehouse</span>
   </footer>
 
-  <!-- CSV preview modal -->
-  <div id="modal" class="modal" hidden>
-    <div class="modal-box">
-      <div class="modal-head">
-        <h3 id="modal-title">Preview</h3>
-        <button id="modal-close" class="btn-ghost" aria-label="Close">✕</button>
-      </div>
-      <div id="modal-body" class="modal-body"></div>
-    </div>
-  </div>
-
+  <script src="assets/config.js"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>
